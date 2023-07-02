@@ -37,12 +37,8 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
 
@@ -113,18 +109,6 @@ This is how you can set up this project locally.
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-
-<!-- USAGE EXAMPLES -->
-## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-
 <!-- LICENSE -->
 ## License
 
@@ -146,7 +130,7 @@ Project Link: [https://github.com/lk36875/notifyme](https://github.com/lk36875/n
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
-[license-url]: https://github.com/lk36875/notifyme/LICENCE.txt
+[license-url]: https://github.com/lk36875/notifyme/blob/main/LICENSE.txt
 
 
 [Flask]: https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white
@@ -174,5 +158,5 @@ Project Link: [https://github.com/lk36875/notifyme](https://github.com/lk36875/n
 [Github Actions]: https://img.shields.io/badge/github_actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=black
 [Github-Actions-url]: https://github.com/features/actions
 
-[license-shield]: https://img.shields.io/github/license/lk36875/notifyme.svg?style=for-the-badge
-[license-url]: https://github.com/lk36875/notifyme/LICENSE.txt
+[license-shield]: https://img.shields.io/github/license/lk36875/notifyme.svg
+[license-url]: https://github.com/lk36875/notifyme/blob/main/LICENSE.txt
