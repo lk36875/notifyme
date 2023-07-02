@@ -1,0 +1,70 @@
+version: "3.9"
+
+services:
+
+  redis:
+    image: redis
+    ports:
+      - 6379:6379
+    restart: always
+
+  mongodb:
+    image: mongo
+    restart: always
+    ports:
+      - 27017:27017
+    env_file:
+      - .prodenv
+    volumes:
+      - mongodb_data:/data/db
+
+  postgres:
+    image: postgres
+    restart: always
+    ports:
+      - 5432:5432
+    env_file:
+      - .prodenv
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  flask_app:
+    build: .
+    depends_on:
+      - mongodb
+      - postgres
+      - redis
+    tty: true
+    ports:
+      - "5000:5000"
+    restart: always
+    env_file:
+      - .prodenv
+
+  worker:
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile_celery
+    command: celery -A notify.celery_app.make_celery worker --loglevel INFO --pool threads
+    depends_on:
+      - redis
+    env_file:
+      - .prodenv
+    tty: true
+
+  beat:
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile_celery
+    command: celery -A notify.celery_app.make_celery beat --loglevel INFO
+    tty: true
+    depends_on:
+      - redis
+    env_file:
+      - .prodenv
+
+volumes:
+  mongodb_data:
+  postgres_data:

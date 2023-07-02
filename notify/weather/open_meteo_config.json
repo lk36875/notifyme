@@ -1,0 +1,4 @@
+{
+    "base_url": "http://api.open-meteo.com/v1/forecast",
+    "base_url_location": "http://geocoding-api.open-meteo.com/v1/search"
+}

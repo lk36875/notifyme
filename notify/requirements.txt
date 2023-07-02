@@ -1,0 +1,17 @@
+flask
+flask-sqlalchemy
+celery
+redis
+flask-jwt-extended
+pytest
+flask_pymongo
+pymongo
+flask_bcrypt
+sqlalchemy 
+geopy
+requests
+celery
+psycopg2
+pytz
+python-dotenv
+pytest-cov

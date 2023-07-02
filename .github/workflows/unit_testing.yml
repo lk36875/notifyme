@@ -1,0 +1,43 @@
+name: Unit testing with pytest.
+
+on:
+  push:
+    branches:
+      - '*'
+
+jobs:
+  test:
+    name: Run unit tests
+    runs-on: ubuntu-latest
+    services:
+      mongodb:
+        image: mongo
+        ports:
+          - 27017:27017
+      redis:
+        image: redis
+        ports:
+          - 6379:6379
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+        env:
+          SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+      - name: Install dependencies
+        run: | 
+          cd ./notify  
+          pip install -r ./requirements.txt
+      - name: Run tests for repositories, services and routes
+        if: always()
+        run: python -B -m pytest notify/tests/unit/repositories notify/tests/unit/services -v --cov
+      - name: Run tests for database, celery and routes
+        if: always()
+        run: python -B -m pytest notify/tests/unit/databases notify/tests/unit/scheduler notify/tests/unit/routes -v --cov
+      - name: Run rest of unit tests
+        if: always()
+        run: |
+          python -B -m pytest notify/tests/unit/weather notify/tests/unit/mail notify/tests/unit/message -v --cov
