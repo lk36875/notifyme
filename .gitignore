@@ -1,0 +1,12 @@
+*.pyc*
+.vscode
+test.py
+v
+instance
+test.db
+.coverage
+foo.*
+celerybeat-schedule.*
+.env
+*.log
+*.coverage*
